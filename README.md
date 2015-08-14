@@ -59,6 +59,10 @@ In your shopify admin, you can use the "Heading 3" (or H3) tag to indicate tab t
 
 Will create two tabs with titles "Details" and "Directions".  The "Details" tab will have a paragraph with "Some content of details" within it.  The "Directions" tab will have a paragraph of with "Some content of directions" and the list.
 
+*BUT THE CLIENT DOESN'T HAVE TO ACTUALLY WRITE THE HTML*
+
+Just have them write in the text editors and use the gui that Shopify provides, text editor buttons to style the titles as "Heading 3" and type everything else as they would.  We'll sort through what the text editor writes no behalf of the client.
+
 ## Improve the styling
 
 There's basic styling provided to get started (which is essentially the styling provided by the Shopify tut)
