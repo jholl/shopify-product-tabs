@@ -42,7 +42,9 @@ Add this element to your template and indicate in the `data-source` the id of th
 
 ```
 
-#### Write within your shop admin text editor and use the "Heading 3" (or H3) tag to indicate tab titles; everything between H3 tags becomes content of the preceding H3.  So for example
+#### Write in the text editors
+
+In your shopify admin, you can use the "Heading 3" (or H3) tag to indicate tab titles; everything between H3 tags becomes content of the preceding H3.  So for example
 
 ```
 <h3>Details</h3>
