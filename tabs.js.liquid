@@ -1,0 +1,71 @@
+(function () {
+
+    // Cache Tabs container and tab data source
+    var $tabContainers = $('.jsTabsContainer');
+
+    $tabContainers.each(function(){
+    
+        var source = this.getAttribute('data-source'),
+            $thisTabContainer = $(this);
+        
+
+        // Create Tabs menu within container
+        var tabsMenu = document.createElement('ul');
+        tabsMenu.setAttribute('class','tabs');
+        $thisTabContainer.append(tabsMenu);
+
+        $(source + ' h3').each(function (index) {
+
+            // Create tab
+            var title = $(this).text();
+            var tab = '<li><a href="#tab' + index + '">' + title + '</a></li>';
+            $(tabsMenu).append(tab);
+
+            // Get tab content
+            // We're setting an arbitrary limit on the while loop just in case something goes wrong that it doesn't loop, and loop, and loop, and loop, and loop.
+            var i = 0;
+            var step = this;
+            var tabContent = [];
+
+            while (i < 100) {
+                i++;
+                
+                var nextStep = $(step)[0].nextElementSibling;
+
+                if (nextStep && $(nextStep)[0].tagName != "H3") {
+                    tabContent.push($(nextStep)[0].outerHTML);
+                    step = nextStep;
+                    continue;
+                }
+                break;
+            }
+
+            //  Set tab content
+            var tabPane = document.createElement('div');
+            tabPane.innerHTML = tabContent.join('');
+            tabPane.setAttribute('id', 'tab' + index);
+            $thisTabContainer.append(tabPane);
+        });
+    });
+
+    // Init all tabs
+    // Taken for the Shopify tutorial
+    // https://docs.shopify.com/support/your-store/products/how-do-i-add-tabs-to-product-descriptions
+    $('.jsTabsContainer ul.tabs').each(function () {
+        var active, content, links = $(this).find('a');
+        active = links.first().addClass('active');
+        content = $(active.attr('href'));
+        links.not(':first').each(function () {
+            $($(this).attr('href')).hide();
+        });
+        $(this).find('a').click(function (e) {
+            active.removeClass('active');
+            content.hide();
+            active = $(this);
+            content = $($(this).attr('href'));
+            active.addClass('active');
+            content.show();
+            return false;
+        });
+    });
+})();
